@@ -28,5 +28,20 @@ public class GraphSimulation {
 
 		return sb.toString();
 	}
+	
+	public static void clearScreen() {
+		for (int clear = 0; clear < 55; clear++) {
+			System.out.println("");
+		}
+	}
+
+	public static void pause(int milis) {
+		try {
+			Thread.sleep(milis);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
