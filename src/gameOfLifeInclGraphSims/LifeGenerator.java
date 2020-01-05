@@ -31,6 +31,18 @@ public class LifeGenerator {
 
 		return tempArray;
 	}
+	
+	private static int[][] cropAroundLiveCells(int[][] cells) {
+		// remove DEAD cells boundary from temporary array
+		int maxLeft = cells[0].length, maxRight = 0, uppermost = cells.length, lowest = 0;
+
+// looking for limits
+
+		int[][] cropped = new int[lowest - uppermost + 1][maxRight - maxLeft + 1];
+// cutting
+		return cropped;
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
