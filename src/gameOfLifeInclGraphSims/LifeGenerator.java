@@ -36,7 +36,22 @@ public class LifeGenerator {
 		// remove DEAD cells boundary from temporary array
 		int maxLeft = cells[0].length, maxRight = 0, uppermost = cells.length, lowest = 0;
 
-// looking for limits
+		for (int y = 0; y < cells.length; y++)
+			for (int x = 0; x < cells[y].length; x++)
+				if (cells[y][x] == 1) {
+
+					if (y < uppermost)
+						uppermost = y; // new upper limit coordinate of 'cropped' array
+
+					if (y > lowest)
+						lowest = y; // new lower limit coordinate of 'cropped' array
+
+					if (x < maxLeft)
+						maxLeft = x; // new left limit coordinate of 'cropped' array
+
+					if (x > maxRight)
+						maxRight = x; // new right limit coordinate of 'cropped' array
+				}
 
 		int[][] cropped = new int[lowest - uppermost + 1][maxRight - maxLeft + 1];
 // cutting
