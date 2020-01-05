@@ -6,9 +6,18 @@ public class LifeGenerator {
 
 	public static int[][] getGeneration(int[][] cells, int generations) {
 
-		int[][] nextGeneration = new int[cells.length][cells[0].length];
+		int[][] nextGeneration = newTempArray(cells);
 
 		return getGeneration(nextGeneration, generations - 1);
+	}
+	
+	private static int[][] newTempArray(int[][] cells) {
+		// New temporary array for neighborhood tests for 'cells' array
+		// It has one more cell around i.e +2 more in each dimension,
+		// than primary array.
+		int[][] tempArray = new int[cells.length + 2][cells[0].length + 2];
+		
+		return tempArray;
 	}
 
 	public static void main(String[] args) {
