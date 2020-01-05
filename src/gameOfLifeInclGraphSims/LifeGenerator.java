@@ -6,9 +6,24 @@ public class LifeGenerator {
 
 	public static int[][] getGeneration(int[][] cells, int generations) {
 		
+		if (generations < 1) // primary array
+			return cropAroundLiveCells(cells);
+		
 		int[][] tempArray = moveCellsToTempArray(cells);
 
 		int[][] nextGeneration = newTempArray(cells);
+		
+		boolean aboveSearchable = false, 
+				belowSearchable = false, 
+				leftSearchable = false, 
+				rightSearchable = false;
+		
+		int testedCell = 0, 
+				lifeInNeighborhood = 0, 
+				startVertical = 0, 
+				startHorizontal = 0, 
+				endVertical = 0,
+				endHorizontal = 0;
 
 		return getGeneration(nextGeneration, generations - 1);
 	}
