@@ -36,25 +36,27 @@ public class LifeGenerator {
 		// remove DEAD cells boundary from temporary array
 		int maxLeft = cells[0].length, maxRight = 0, uppermost = cells.length, lowest = 0;
 
-		for (int y = 0; y < cells.length; y++)
-			for (int x = 0; x < cells[y].length; x++)
-				if (cells[y][x] == 1) {
+		for (int tempY = 0; tempY < cells.length; tempY++)
+			for (int tempX = 0; tempX < cells[tempY].length; tempX++)
+				if (cells[tempY][tempX] == 1) {
 
-					if (y < uppermost)
-						uppermost = y; // new upper limit coordinate of 'cropped' array
+					if (tempY < uppermost)
+						uppermost = tempY; // new upper limit coordinate of 'cropped' array
 
-					if (y > lowest)
-						lowest = y; // new lower limit coordinate of 'cropped' array
+					if (tempY > lowest)
+						lowest = tempY; // new lower limit coordinate of 'cropped' array
 
-					if (x < maxLeft)
-						maxLeft = x; // new left limit coordinate of 'cropped' array
+					if (tempX < maxLeft)
+						maxLeft = tempX; // new left limit coordinate of 'cropped' array
 
-					if (x > maxRight)
-						maxRight = x; // new right limit coordinate of 'cropped' array
+					if (tempX > maxRight)
+						maxRight = tempX; // new right limit coordinate of 'cropped' array
 				}
 
 		int[][] cropped = new int[lowest - uppermost + 1][maxRight - maxLeft + 1];
-// cutting
+		for (int y = uppermost; y <= lowest; y++)
+			for (int x = maxLeft; x <= maxRight; x++)
+				cropped[y - uppermost][x - maxLeft] = cells[y][x];
 		return cropped;
 	}
 
